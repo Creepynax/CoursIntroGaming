@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
     private Rigidbody2D _rigBod;
 
     [SerializeField]
@@ -21,6 +22,13 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _rigBod = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start(){
+        ActiveCheckpoint checkpoint = FindObjectOfType<ActiveCheckpoint>();
+        if(checkpoint != null){
+            transform.position = checkpoint.checkpoint;
+        }
     }
 
     // Update is called once per frame
@@ -47,6 +55,12 @@ public class PlayerController : MonoBehaviour
         }
 
         _rigBod.velocity = new Vector2(m_MoveSpeed * _movement, _rigBod.velocity.y);
+
+        
+    }
+
+    public void Flip(){
+        transform.Rotate(0, 180, 0);
     }
 
     public void Stop()

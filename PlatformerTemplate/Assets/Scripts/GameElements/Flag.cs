@@ -10,6 +10,12 @@ public class Flag : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             FindObjectOfType<GameManager>().FinishGame();
+            ActiveCheckpoint checkpoint = FindObjectOfType<ActiveCheckpoint>();
+
+            if(checkpoint != null){
+            Destroy(checkpoint.gameObject);
+            
+            }
         }
     }
 
