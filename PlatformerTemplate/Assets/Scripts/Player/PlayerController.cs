@@ -47,6 +47,14 @@ public class PlayerController : MonoBehaviour
         }
 
         _rigBod.velocity = new Vector2(m_MoveSpeed * _movement, _rigBod.velocity.y);
+
+        // Ajouter une condition pour vérifier si la position X du joueur est supérieure à 200
+        if(transform.position.y < -60)
+        {
+            //remet le joueur à sa position de départ
+            transform.position = new Vector2(-9.09f, 3.71f);
+            FindObjectOfType<GameManager>().GameOver();
+        }
     }
 
     public void Stop()
