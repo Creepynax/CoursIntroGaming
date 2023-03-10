@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     private float _movement;
     private bool _isJump;
 
+    public float movementMultiplicator = 1;
+
     private void Awake()
     {
         _rigBod = GetComponent<Rigidbody2D>();
@@ -46,7 +48,7 @@ public class PlayerController : MonoBehaviour
             _rigBod.AddForce(Vector2.up * m_JumpForce, ForceMode2D.Impulse);
         }
 
-        _rigBod.velocity = new Vector2(m_MoveSpeed * _movement, _rigBod.velocity.y);
+        _rigBod.velocity = new Vector2(m_MoveSpeed * _movement * movementMultiplicator, _rigBod.velocity.y);
     }
 
     public void Stop()
