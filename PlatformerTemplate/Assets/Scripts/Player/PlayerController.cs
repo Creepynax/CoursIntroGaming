@@ -11,7 +11,16 @@ public class PlayerController : MonoBehaviour
     private LayerMask m_GroundLayer;
 
     [SerializeField]
+    private int m_HauteutMin;
+
+    [SerializeField]
     private float m_JumpForce;
+
+    [SerializeField]
+    private float m_xDepart;
+
+    [SerializeField]
+    private float m_YDepart;
 
     [SerializeField]
     private float m_MoveSpeed;
@@ -56,12 +65,25 @@ public class PlayerController : MonoBehaviour
 
         _rigBod.velocity = new Vector2(m_MoveSpeed * _movement, _rigBod.velocity.y);
 
-        
+        // Ajouter une condition pour vérifier si la position X du joueur est superieur à -60
+        if(transform.position.y < m_HauteutMin)
+        {
+            //remet le joueur à sa position de départ
+            transform.position = new Vector2(m_xDepart, m_YDepart);
+            FindObjectOfType<GameManager>().GameOver();
+        }
+
+        //rotate le joueur en fonction de ou il se dirige
+        if(_movement > 0)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        else if(_movement < 0)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
     }
 
-    public void Flip(){
-        transform.Rotate(0, 180, 0);
-    }
 
     public void Stop()
     {
