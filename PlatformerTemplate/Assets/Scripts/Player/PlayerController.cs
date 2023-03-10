@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
         _rigBod.velocity = new Vector2(m_MoveSpeed * _movement, _rigBod.velocity.y);
 
-        
+
     }
 
     public void Flip(){
