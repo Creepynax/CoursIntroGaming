@@ -2033,8 +2033,8 @@ MonoBehaviour:
     m_Bits: 64
   m_HauteutMin: 0
   m_JumpForce: 15
-  m_xDepart: 0
-  m_YDepart: 0
+  m_xDepart: -323.6
+  m_YDepart: 130.4
   m_MoveSpeed: 7
   movementMultiplicator: 1
 --- !u!1 &313225807
